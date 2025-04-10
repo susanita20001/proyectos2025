@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mar Hoteles - Disfruta las mejores playas de México</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Mar Hoteles</h1>
+                <p>Tu escape perfecto en las playas de México</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#hoteles">Hoteles</a></li>
+                    <li><a href="#paquetes">Paquetes</a></li>
+                    <li><a href="#actividades">Actividades</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#reservas" class="reserva-btn">Reservar ahora</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Descubre el paraíso en las costas de México</h2>
+            <p>Experiencias únicas en los mejores hoteles playeros</p>
+            <a href="#hoteles" class="btn">Explorar hoteles</a>
+        </div>
+    </section>
+
+    <section id="hoteles" class="destacados">
+        <div class="container">
+            <h2>Nuestros Hoteles en México</h2>
+            <div class="filtros">
+                <select id="filtro-estado" onchange="filtrarHoteles()">
+                    <option value="todos">Todos los estados</option>
+                    <option value="Quintana Roo">Quintana Roo</option>
+                    <option value="Baja California Sur">Baja California Sur</option>
+                    <option value="Guerrero">Guerrero</option>
+                    <option value="Oaxaca">Oaxaca</option>
+                    <option value="Jalisco">Jalisco</option>
+                    <option value="Nayarit">Nayarit</option>
+                    <option value="Sinaloa">Sinaloa</option>
+                    <option value="Sonora">Sonora</option>
+                </select>
+            </div>
+            <div class="hoteles-grid" id="hoteles-container"></div>
+        </div>
+    </section>
+
+    <section id="paquetes" class="paquetes">
+        <div class="container">
+            <h2>Paquetes Especiales</h2>
+            <div class="paquetes-grid">
+                <div class="paquete">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Paquete Romántico">
+                    <h3>Escapada Romántica</h3>
+                    <p>Incluye cena en la playa, masaje para parejas y suite con jacuzzi.</p>
+                    <span class="precio">$12,500 MXN</span>
+                    <button class="btn" onclick="mostrarReserva('Escapada Romántica', 12500)">Reservar</button>
+                </div>
+                <div class="paquete">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Paquete Familiar">
+                    <h3>Vacaciones Familiares</h3>
+                    <p>Actividades para niños, alberca con tobogán y habitaciones conectadas.</p>
+                    <span class="precio">$18,300 MXN</span>
+                    <button class="btn" onclick="mostrarReserva('Vacaciones Familiares', 18300)">Reservar</button>
+                </div>
+                <div class="paquete">
+                    <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Paquete Todo Incluido">
+                    <h3>Todo Incluido Premium</h3>
+                    <p>Bebidas ilimitadas, acceso a restaurantes gourmet y actividades exclusivas.</p>
+                    <span class="precio">$22,800 MXN</span>
+                    <button class="btn" onclick="mostrarReserva('Todo Incluido Premium', 22800)">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="actividades" class="actividades">
+        <div class="container">
+            <h2>Actividades</h2>
+            <div class="actividades-tabs">
+                <button class="tab-btn active" onclick="mostrarActividades('dia')">Día</button>
+                <button class="tab-btn" onclick="mostrarActividades('noche')">Noche</button>
+            </div>
+            <div class="actividades-contenido">
+                <div id="actividades-dia" class="actividades-grid">
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Snorkel">
+                        <h3>Snorkel en arrecifes</h3>
+                        <p>Descubre la vida marina en nuestros arrecifes protegidos.</p>
+                        <span class="precio">$800 MXN por persona</span>
+                    </div>
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Yates">
+                        <h3>Paseo en yate</h3>
+                        <p>Recorre la costa en nuestros lujosos yates con bar abierto.</p>
+                        <span class="precio">$1,500 MXN por persona</span>
+                    </div>
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Spa">
+                        <h3>Spa en la playa</h3>
+                        <p>Masajes relajantes con vista al mar y tratamientos rejuvenecedores.</p>
+                        <span class="precio">$1,200 MXN por persona</span>
+                    </div>
+                </div>
+                <div id="actividades-noche" class="actividades-grid" style="display:none;">
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cena">
+                        <h3>Cena en la playa</h3>
+                        <p>Cena gourmet con los pies en la arena y música en vivo.</p>
+                        <span class="precio">$1,800 MXN por persona</span>
+                    </div>
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fiesta">
+                        <h3>Fiesta en la piscina</h3>
+                        <p>DJ en vivo, barras de bebidas y ambiente electrizante.</p>
+                        <span class="precio">$1,200 MXN por persona</span>
+                    </div>
+                    <div class="actividad">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Luces">
+                        <h3>Tour de bioluminiscencia</h3>
+                        <p>Nada en aguas que brillan en la oscuridad, experiencia mágica.</p>
+                        <span class="precio">$900 MXN por persona</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contacto-grid">
+                <div class="info">
+                    <h3>Información de contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Costera 123, Cancún, México</p>
+                    <p><i class="fas fa-phone"></i> +52 998 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@marhoteles.com</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+              <!-- Modificar el formulario de contacto -->
+<form class="formulario" id="contacto-form" action="https://formsubmit.co/sht23413070030463@cecyteh.edu.mx" method="POST">
+    <input type="hidden" name="_subject" value="Nuevo mensaje de Mar Hoteles">
+    <input type="hidden" name="_template" value="table">
+    <div class="input-group">
+        <input type="text" id="nombre" name="name" placeholder="Nombre completo" required>
+    </div>
+    <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    </div>
+    <div class="input-group">
+        <textarea id="mensaje" name="message" placeholder="Tu mensaje" required></textarea>
+    </div>
+    <button type="submit" class="btn">Enviar mensaje</button>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-reserva" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2 id="titulo-reserva"></h2>
+            <div class="reserva-form">
+                <div class="input-group">
+                    <label for="fecha-llegada">Fecha de llegada:</label>
+                    <input type="date" id="fecha-llegada" required>
+                </div>
+                <div class="input-group">
+                    <label for="fecha-salida">Fecha de salida:</label>
+                    <input type="date" id="fecha-salida" required>
+                </div>
+                <div class="input-group">
+                    <label for="huespedes">Huéspedes:</label>
+                    <select id="huespedes" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5+">5+</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="habitacion">Tipo de habitación:</label>
+                    <select id="habitacion" required>
+                        <option value="estandar">Estándar</option>
+                        <option value="superior">Superior</option>
+                        <option value="suite">Suite</option>
+                        <option value="suite-premium">Suite Premium</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="hotel-seleccionado">Hotel:</label>
+                    <select id="hotel-seleccionado" required>
+                        <!-- Opciones se llenarán dinámicamente -->
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="actividades-seleccionadas">Actividades:</label>
+                    <select id="actividades-seleccionadas" multiple>
+                        <option value="snorkel">Snorkel ($800)</option>
+                        <option value="yate">Paseo en yate ($1,500)</option>
+                        <option value="spa">Spa ($1,200)</option>
+                        <option value="cena">Cena en playa ($1,800)</option>
+                        <option value="fiesta">Fiesta en piscina ($1,200)</option>
+                        <option value="bioluminiscencia">Tour bioluminiscencia ($900)</option>
+                    </select>
+                </div>
+                <div class="resumen">
+                    <h3>Resumen de reserva</h3>
+                    <p id="resumen-paquete"></p>
+                    <p id="resumen-precio"></p>
+                    <p id="resumen-actividades">Actividades: $0 MXN</p>
+                    <p id="resumen-total">Total: $0 MXN</p>
+                </div>
+                <button class="btn" onclick="mostrarPago()">Continuar al pago</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-pago" class="modal">
+        <div class="modal-contenido pago-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2>Método de pago</h2>
+            <form class="form">
+                <div class="credit-card-info--form">
+                    <div class="input_container">
+                        <label for="card-name" class="input_label">Nombre del titular de la tarjeta</label>
+                        <input id="card-name" class="input_field" type="text" name="input-name" title="Nombre del titular" placeholder="Ingrese el nombre completo" required>
+                    </div>
+                    <div class="input_container">
+                        <label for="card-number" class="input_label">Número de tarjeta (16 dígitos)</label>
+                        <input id="card-number" class="input_field" type="text" name="input-name" title="Número de tarjeta" placeholder="0000 0000 0000 0000" pattern="[0-9]{16}" maxlength="16" required>
+                    </div>
+                    <div class="input_container">
+                        <label for="card-expiry" class="input_label">Fecha de expiración / CVV</label>
+                        <div class="split">
+                            <input id="card-expiry" class="input_field" type="text" name="input-name" title="Fecha de expiración" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
+                            <input id="card-cvv" class="input_field" type="text" name="cvv" title="CVV" placeholder="CVV" pattern="[0-9]{3,4}" maxlength="4" required>
+                        </div>
+                    </div>
+                </div>
+                <button class="purchase--btn" type="button" onclick="procesarPago()">Realizar pago</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-ticket" class="modal">
+        <div class="modal-contenido ticket-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2>¡Reserva confirmada!</h2>
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h3>Mar Hoteles</h3>
+                    <p>Reservación #<span id="ticket-numero"></span></p>
+                </div>
+                <div class="ticket-body">
+                    <div class="ticket-info">
+                        <p><strong>Paquete:</strong> <span id="ticket-paquete"></span></p>
+                        <p><strong>Hotel:</strong> <span id="ticket-hotel"></span></p>
+                        <p><strong>Huéspedes:</strong> <span id="ticket-huespedes"></span></p>
+                        <p><strong>Habitación:</strong> <span id="ticket-habitacion"></span></p>
+                        <p><strong>Check-in:</strong> <span id="ticket-checkin"></span></p>
+                        <p><strong>Check-out:</strong> <span id="ticket-checkout"></span></p>
+                        <p><strong>Actividades:</strong> <span id="ticket-actividades"></span></p>
+                    </div>
+                    <div class="ticket-pago">
+                        <p><strong>Método de pago:</strong> Tarjeta terminada en <span id="ticket-tarjeta"></span></p>
+                        <p><strong>Total pagado:</strong> <span id="ticket-total"></span></p>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <p>¡Gracias por su reserva! En breve recibirá un correo con los detalles.</p>
+                    <button class="btn" onclick="generarPDF()">Descargar PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Mar Hoteles</h3>
+                    <p>Ofreciendo las mejores experiencias playeras en México desde 2025.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#hoteles">Hoteles</a></li>
+                        <li><a href="#paquetes">Paquetes</a></li>
+                        <li><a href="#actividades">Actividades</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Costera 123, Cancún, México</p>
+                    <p><i class="fas fa-phone"></i> +52 998 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@marhoteles.com</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Mar Hoteles. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="hoteles.js"></script>
+    <script src="reservaciones.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>

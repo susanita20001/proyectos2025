@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      margin: 0 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BIENVENIDO</h1>
+    <p>Selecciona la opción de tu agrado</p>
+    
+    <form id="selectorForm">
+      <label>
+        <input type="radio" name="opcion" value="pizzeria.html">
+        Pizzería
+      </label>
+      <label>
+        <input type="radio" name="opcion" value="marhotel.html">
+        Mar-Hotel
+      </label>
+      <br><br>
+      <button type="button" onclick="redirigir()">Ir</button>
+    </form>
+  </div>
+
+  <script>
+    function redirigir() {
+      const radios = document.getElementsByName('opcion');
+      let seleccionado = null;
+
+      for (const radio of radios) {
+        if (radio.checked) {
+          seleccionado = radio.value;
+          break;
+        }
+      }
+
+      if (seleccionado) {
+        window.location.href = seleccionado;
+      } else {
+        alert("Por favor selecciona una opción.");
+      }
+    }
+  </script>
+</body>
+</html>
