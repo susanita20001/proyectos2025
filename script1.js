@@ -1,84 +1,117 @@
-
-document.querySelector('.mobile-menu').addEventListener('click', function() {
-    const nav = document.querySelector('nav');
-    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+// Funciones comunes a todas las páginas
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar componentes comunes
+    initMobileMenu();
+    initScrollToTop();
+    setActiveNavLink();
 });
-function mostrarActividades(tipo) {
-    document.getElementById('actividades-dia').style.display = 'none';
-    document.getElementById('actividades-noche').style.display = 'none';
-    document.getElementById(`actividades-${tipo}`).style.display = 'grid';
+
+function initMobileMenu() {
+    const menuToggle = document.createElement('div');
+    menuToggle.className = 'mobile-menu-toggle';
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    document.querySelector('.main-header').appendChild(menuToggle);
     
-    const tabs = document.querySelectorAll('.tab-btn');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
+    menuToggle.addEventListener('click', function() {
+        document.querySelector('.main-nav').classList.toggle('active');
+    });
 }
 
-document.getElementById('contacto-form').addEventListener('submit', function(e) {
-    alert('Tu mensaje ha sido enviado. Nos pondremos en contacto contigo pronto.');
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    cargarHoteles();
-    llenarOpcionesHoteles();
+function initScrollToTop() {
+    const scrollButton = document.createElement('button');
+    scrollButton.className = 'scroll-to-top';
+    scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(scrollButton);
     
-    const actividadesSelect = document.getElementById('actividades-seleccionadas');
-    if (actividadesSelect) {
-        actividadesSelect.multiple = true;
-        actividadesSelect.size = 6; // Mostrar 6 opciones a la vez
-    }
-});
-
-document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('¡Gracias por suscribirte a nuestro newsletter!');
-    this.reset();
-});
-
-window.addEventListener('click', function(event) {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollButton.classList.add('show');
+        } else {
+            scrollButton.classList.remove('show');
         }
     });
-});
+    
+    scrollButton.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
-document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} Mar Hoteles. Todos los derechos reservados.`;
-document.addEventListener('DOMContentLoaded', function() {
-    cargarHoteles();
-    llenarOpcionesHoteles();
-});
-function llenarOpcionesHoteles() {
-    const select = document.getElementById('hotel-seleccionado');
-    hoteles.forEach(hotel => {
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.main-nav a');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (currentPage === linkPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// Función para cargar hoteles (ejemplo)
+function loadHotels(destination = '') {
+    const container = document.getElementById('hoteles-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    // Filtramos si hay destino seleccionado
+    const filteredHotels = destination 
+        ? hoteles.filter(hotel => hotel.ubicacion.includes(destination))
+        : hoteles;
+    
+    if (filteredHotels.length === 0) {
+        container.innerHTML = '<p class="no-results">No se encontraron hoteles para este destino.</p>';
+        return;
+    }
+    
+    filteredHotels.forEach(hotel => {
+        const card = document.createElement('div');
+        card.className = 'hotel-card';
+        card.innerHTML = `
+            <img src="${hotel.imagen}" alt="${hotel.nombre}">
+            <div class="hotel-info">
+                <h3>${hotel.nombre}</h3>
+                <div class="hotel-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${hotel.ubicacion}</span>
+                </div>
+                <div class="hotel-rating">
+                    ${'★'.repeat(hotel.calificacion)}${'☆'.repeat(5 - hotel.calificacion)}
+                </div>
+                <p class="hotel-price">$${hotel.precio} MXN/noche</p>
+                <button class="book-button" onclick="startReservation('hotel', '${hotel.nombre}')">Reservar ahora</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Función para inicializar select de destinos
+function initDestinationSelect() {
+    const select = document.getElementById('destino-hotel');
+    if (!select) return;
+    
+    // Obtenemos todos los destinos únicos de los hoteles
+    const destinations = [...new Set(hoteles.map(hotel => hotel.ubicacion))];
+    
+    destinations.forEach(destino => {
         const option = document.createElement('option');
-        option.value = hotel.nombre;
-        option.textContent = `${hotel.nombre} - ${hotel.ubicacion}`;
+        option.value = destino;
+        option.textContent = destino;
         select.appendChild(option);
     });
-}
-function actualizarResumen() {
-    const paquete = document.getElementById('titulo-reserva').textContent;
-    const precioBase = parseFloat(document.getElementById('resumen-precio').textContent.replace('Precio base: $', '').replace(' MXN', '').replace(',', ''));
-    const huespedes = document.getElementById('huespedes').value;
-    const habitacion = document.getElementById('habitacion').value;
-    const hotel = document.getElementById('hotel-seleccionado').value;
-    const actividades = Array.from(document.getElementById('actividades-seleccionadas').selectedOptions).map(opt => opt.text);
     
-    let costoActividades = 0;
-    Array.from(document.getElementById('actividades-seleccionadas').selectedOptions).forEach(opt => {
-        const precio = parseFloat(opt.text.match(/\$([\d,]+)/)[1].replace(',', ''));
-        costoActividades += precio;
+    // Event listener para búsqueda
+    select.addEventListener('change', function() {
+        loadHotels(this.value);
     });
-    
-    const total = precioBase + costoActividades;
-    
-    document.getElementById('resumen-paquete').textContent = `Paquete: ${paquete}`;
-    document.getElementById('resumen-actividades').textContent = `Actividades: $${costoActividades.toLocaleString('es-MX')} MXN`;
-    document.getElementById('resumen-total').textContent = `Total: $${total.toLocaleString('es-MX')} MXN`;
 }
 
-document.getElementById('huespedes').addEventListener('change', actualizarResumen);
-document.getElementById('habitacion').addEventListener('change', actualizarResumen);
-document.getElementById('hotel-seleccionado').addEventListener('change', actualizarResumen);
-document.getElementById('actividades-seleccionadas').addEventListener('change', actualizarResumen);
+// Inicialización específica para página de hoteles
+if (document.querySelector('.hoteles-main')) {
+    initDestinationSelect();
+    loadHotels();
+}
