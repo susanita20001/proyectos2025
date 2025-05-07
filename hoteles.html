@@ -15,11 +15,11 @@
         </div>
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="marhotel.html"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="destinos.html"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
                 <li><a href="hoteles.html" class="active"><i class="fas fa-hotel"></i> Hoteles</a></li>
                 <li><a href="vuelos.html"><i class="fas fa-plane"></i> Vuelos</a></li>
-                <li><a href="renta-autos.html"><i class="fas fa-car"></i> Autos</a></li>
+                <li><a href="rentaautos.html"><i class="fas fa-car"></i> Autos</a></li>
                 <li><a href="tours.html"><i class="fas fa-route"></i> Tours</a></li>
                 <li><a href="actividades.html"><i class="fas fa-hiking"></i> Actividades</a></li>
                 <li><a href="seguros.html"><i class="fas fa-shield-alt"></i> Seguros</a></li>
@@ -29,24 +29,126 @@
         </nav>
     </header>
 
-    <section class="about">
+    <section class="hotels">
         <h2>Hoteles en México</h2>
-        <p>Encuentra los mejores hoteles con MexiViajes. Comodidad, lujo y economía para todos los gustos.</p>
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-hotel"></i>
-                <h3>Gran Hotel CDMX</h3>
-                <p>Con una vista impresionante al Zócalo, ideal para viajes de placer o negocios.</p>
+        <p>Encuentra el alojamiento perfecto para tu viaje</p>
+        
+        <div class="filter-section">
+            <div class="filter">
+                <label for="destination">Destino:</label>
+                <select id="destination">
+                    <option value="all">Todos los destinos</option>
+                    <option value="cdmx">Ciudad de México</option>
+                    <option value="cancun">Cancún</option>
+                    <option value="guadalajara">Guadalajara</option>
+                    <option value="oaxaca">Oaxaca</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-swimmer"></i>
-                <h3>Resort Tulum</h3>
-                <p>Disfruta de la playa y la selva en un mismo lugar, con todo incluido.</p>
+            <div class="filter">
+                <label for="price-range">Rango de precios:</label>
+                <select id="price-range">
+                    <option value="all">Todos</option>
+                    <option value="economy">Económico ($500 - $1,500)</option>
+                    <option value="medium">Medio ($1,500 - $3,500)</option>
+                    <option value="luxury">Lujo ($3,500+)</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-bed"></i>
-                <h3>Hotel Colonial Oaxaca</h3>
-                <p>Una experiencia única en el corazón de una ciudad llena de historia y sabor.</p>
+            <button id="filter-btn" class="btn-primary">Filtrar</button>
+        </div>
+        
+        <div class="hotel-list">
+            <!-- Hotel 1 -->
+            <div class="hotel-card">
+                <img src="img/hotel1.jpg" alt="Gran Hotel Ciudad de México">
+                <div class="hotel-info">
+                    <h3>Gran Hotel Ciudad de México</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 (1,234 reviews)</span>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Centro Histórico, CDMX</p>
+                    <p><i class="fas fa-wifi"></i> WiFi gratis <i class="fas fa-swimming-pool"></i> Alberca <i class="fas fa-utensils"></i> Restaurante</p>
+                    <div class="price">
+                        <span class="original-price">$2,800</span>
+                        <span class="discounted-price">$2,100/noche</span>
+                        <span class="discount">25% OFF</span>
+                    </div>
+                    <button class="btn-primary">Reservar ahora</button>
+                </div>
+            </div>
+            
+            <!-- Hotel 2 -->
+            <div class="hotel-card">
+                <img src="img/hotel2.jpg" alt="Hotel Xcaret México">
+                <div class="hotel-info">
+                    <h3>Hotel Xcaret México</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.9 (3,456 reviews)</span>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Playa del Carmen, Quintana Roo</p>
+                    <p><i class="fas fa-wifi"></i> WiFi gratis <i class="fas fa-umbrella-beach"></i> Playa privada <i class="fas fa-cocktail"></i> Todo incluido</p>
+                    <div class="price">
+                        <span class="original-price">$6,500</span>
+                        <span class="discounted-price">$5,200/noche</span>
+                        <span class="discount">20% OFF</span>
+                    </div>
+                    <button class="btn-primary">Reservar ahora</button>
+                </div>
+            </div>
+            
+            <!-- Hotel 3 -->
+            <div class="hotel-card">
+                <img src="img/hotel3.jpg" alt="Casa Oaxaca">
+                <div class="hotel-info">
+                    <h3>Casa Oaxaca</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.7 (892 reviews)</span>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Centro, Oaxaca</p>
+                    <p><i class="fas fa-wifi"></i> WiFi gratis <i class="fas fa-spa"></i> Spa <i class="fas fa-bicycle"></i> Rentas de bicicletas</p>
+                    <div class="price">
+                        <span class="discounted-price">$1,850/noche</span>
+                    </div>
+                    <button class="btn-primary">Reservar ahora</button>
+                </div>
+            </div>
+            
+            <!-- Hotel 4 -->
+            <div class="hotel-card">
+                <img src="img/hotel4.jpg" alt="Hotel Demetria">
+                <div class="hotel-info">
+                    <h3>Hotel Demetria</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.8 (1,567 reviews)</span>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Guadalajara, Jalisco</p>
+                    <p><i class="fas fa-wifi"></i> WiFi gratis <i class="fas fa-wine-glass-alt"></i> Bar <i class="fas fa-concierge-bell"></i> Servicio a cuartos</p>
+                    <div class="price">
+                        <span class="original-price">$2,300</span>
+                        <span class="discounted-price">$1,950/noche</span>
+                        <span class="discount">15% OFF</span>
+                    </div>
+                    <button class="btn-primary">Reservar ahora</button>
+                </div>
             </div>
         </div>
     </section>
@@ -60,7 +162,7 @@
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="marhotel.html">Inicio</a></li>
                     <li><a href="destinos.html">Destinos</a></li>
                     <li><a href="hoteles.html">Hoteles</a></li>
                     <li><a href="vuelos.html">Vuelos</a></li>
@@ -68,28 +170,24 @@
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Servicios</h3>
-                <ul>
-                    <li><a href="renta-autos.html">Renta de Autos</a></li>
-                    <li><a href="tours.html">Tours</a></li>
-                    <li><a href="actividades.html">Actividades</a></li>
-                    <li><a href="seguros.html">Seguros</a></li>
-                    <li><a href="playas.html">Playas</a></li>
-                </ul>
+                <h3>Contacto</h3>
+                <p><i class="fas fa-phone"></i> 55 1234 5678</p>
+                <p><i class="fas fa-envelope"></i> info@mexiviajes.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Reforma 123, CDMX</p>
             </div>
             <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cancelaciones</a></li>
-                </ul>
+                <h3>Newsletter</h3>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MexiViajes. Todos los derechos reservados. Creado por Susi Disfruta de unas lindas vacaciones.</p>
+            <p>&copy; 2025 MexiViajes. Todos los derechos reservados. Creado por Susi.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

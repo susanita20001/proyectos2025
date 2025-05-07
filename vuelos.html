@@ -15,11 +15,11 @@
         </div>
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="marhotel.html"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="destinos.html"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
                 <li><a href="hoteles.html"><i class="fas fa-hotel"></i> Hoteles</a></li>
                 <li><a href="vuelos.html" class="active"><i class="fas fa-plane"></i> Vuelos</a></li>
-                <li><a href="renta-autos.html"><i class="fas fa-car"></i> Autos</a></li>
+                <li><a href="rentaautos.html"><i class="fas fa-car"></i> Autos</a></li>
                 <li><a href="tours.html"><i class="fas fa-route"></i> Tours</a></li>
                 <li><a href="actividades.html"><i class="fas fa-hiking"></i> Actividades</a></li>
                 <li><a href="seguros.html"><i class="fas fa-shield-alt"></i> Seguros</a></li>
@@ -29,24 +29,135 @@
         </nav>
     </header>
 
-    <section class="about">
+    <section class="vuelos">
         <h2>Vuelos Nacionales e Internacionales</h2>
-        <p>Reserva tus vuelos al mejor precio con MexiViajes. Contamos con opciones económicas, premium y vuelos directos.</p>
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-plane-departure"></i>
-                <h3>CDMX - Cancún</h3>
-                <p>Vuelos diarios con aerolíneas de confianza. Disfruta del Caribe Mexicano en pocas horas.</p>
+        
+        <div class="filtros">
+            <div class="filtro">
+                <label for="origen">Origen:</label>
+                <select id="origen">
+                    <option>Ciudad de México (AICM)</option>
+                    <option>Guadalajara (GDL)</option>
+                    <option>Monterrey (MTY)</option>
+                    <option>Cancún (CUN)</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-globe-americas"></i>
-                <h3>CDMX - Los Ángeles</h3>
-                <p>Vuela a Estados Unidos con tarifas especiales y excelente servicio a bordo.</p>
+            <div class="filtro">
+                <label for="destino">Destino:</label>
+                <select id="destino">
+                    <option>Cancún (CUN)</option>
+                    <option>Los Cabos (SJD)</option>
+                    <option>Puerto Vallarta (PVR)</option>
+                    <option>Miami (MIA)</option>
+                    <option>Madrid (MAD)</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-plane-arrival"></i>
-                <h3>Guadalajara - Monterrey</h3>
-                <p>Rutas rápidas para conectar con el norte del país de forma cómoda y segura.</p>
+            <div class="filtro">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha">
+            </div>
+            <button class="btn-buscar">Buscar Vuelos</button>
+        </div>
+        
+        <div class="resultados-vuelos">
+            <div class="vuelo">
+                <div class="info-vuelo">
+                    <div class="horario">
+                        <span class="hora">07:00</span>
+                        <span class="ciudad">CDMX</span>
+                    </div>
+                    <div class="duracion">
+                        <i class="fas fa-plane"></i>
+                        <span>2h 15m</span>
+                    </div>
+                    <div class="horario">
+                        <span class="hora">09:15</span>
+                        <span class="ciudad">CUN</span>
+                    </div>
+                    <div class="aerolinea">
+                        <img src="img/aeromexico.png" alt="Aeroméxico">
+                        <span>Aeroméxico</span>
+                    </div>
+                </div>
+                <div class="precio">
+                    <span class="monto">$2,450</span>
+                    <button class="btn-reservar">Reservar</button>
+                </div>
+            </div>
+            
+            <div class="vuelo">
+                <div class="info-vuelo">
+                    <div class="horario">
+                        <span class="hora">10:30</span>
+                        <span class="ciudad">CDMX</span>
+                    </div>
+                    <div class="duracion">
+                        <i class="fas fa-plane"></i>
+                        <span>2h 30m</span>
+                    </div>
+                    <div class="horario">
+                        <span class="hora">13:00</span>
+                        <span class="ciudad">CUN</span>
+                    </div>
+                    <div class="aerolinea">
+                        <img src="img/volaris.png" alt="Volaris">
+                        <span>Volaris</span>
+                    </div>
+                </div>
+                <div class="precio">
+                    <span class="monto">$1,890</span>
+                    <button class="btn-reservar">Reservar</button>
+                </div>
+            </div>
+            
+            <div class="vuelo">
+                <div class="info-vuelo">
+                    <div class="horario">
+                        <span class="hora">15:45</span>
+                        <span class="ciudad">CDMX</span>
+                    </div>
+                    <div class="duracion">
+                        <i class="fas fa-plane"></i>
+                        <span>2h 00m</span>
+                    </div>
+                    <div class="horario">
+                        <span class="hora">17:45</span>
+                        <span class="ciudad">CUN</span>
+                    </div>
+                    <div class="aerolinea">
+                        <img src="img/vivaaerobus.png" alt="Viva Aerobus">
+                        <span>Viva Aerobus</span>
+                    </div>
+                </div>
+                <div class="precio">
+                    <span class="monto">$1,650</span>
+                    <button class="btn-reservar">Reservar</button>
+                </div>
+            </div>
+            
+            <div class="vuelo">
+                <div class="info-vuelo">
+                    <div class="horario">
+                        <span class="hora">08:20</span>
+                        <span class="ciudad">CDMX</span>
+                    </div>
+                    <div class="duracion">
+                        <i class="fas fa-plane"></i>
+                        <span>4h 10m</span>
+                    </div>
+                    <div class="horario">
+                        <span class="hora">12:30</span>
+                        <span class="ciudad">MIA</span>
+                    </div>
+                    <div class="aerolinea">
+                        <img src="img/aeromexico.png" alt="Aeroméxico">
+                        <span>Aeroméxico</span>
+                    </div>
+                </div>
+                <div class="precio">
+                    <span class="monto">$5,780</span>
+                    <button class="btn-reservar">Reservar</button>
+                </div>
             </div>
         </div>
     </section>
@@ -83,13 +194,14 @@
                     <li><a href="#">Términos y Condiciones</a></li>
                     <li><a href="#">Política de Privacidad</a></li>
                     <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cancelaciones</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 MexiViajes. Todos los derechos reservados. Creado en marzo por Susi.</p>
+            <p>&copy; 2025 MexiViajes. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
