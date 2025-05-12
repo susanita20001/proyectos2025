@@ -29,24 +29,87 @@
         </nav>
     </header>
 
-    <section class="about">
+    <section class="actividades">
         <h2>Actividades en México</h2>
-        <p>Vive aventuras emocionantes y actividades culturales en cada destino. ¡La diversión está garantizada!</p>
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-swimmer"></i>
-                <h3>Deportes Acuáticos</h3>
-                <p>Disfruta de buceo, esnórquel, paddle y kayak en las costas mexicanas.</p>
+        
+        <div class="filtros">
+            <div class="filtro">
+                <label for="tipo-actividad">Tipo:</label>
+                <select id="tipo-actividad">
+                    <option>Todas</option>
+                    <option>Aventura</option>
+                    <option>Cultura</option>
+                    <option>Gastronomía</option>
+                    <option>Naturaleza</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-utensils"></i>
-                <h3>Gastronomía</h3>
-                <p>Participa en talleres de cocina tradicional mexicana y catas de mezcal o tequila.</p>
+            <div class="filtro">
+                <label for="ubicacion">Ubicación:</label>
+                <select id="ubicacion">
+                    <option>Todas</option>
+                    <option>CDMX</option>
+                    <option>Quintana Roo</option>
+                    <option>Oaxaca</option>
+                    <option>Chiapas</option>
+                </select>
             </div>
-            <div class="feature">
-                <i class="fas fa-music"></i>
-                <h3>Eventos y Festivales</h3>
-                <p>Vive la cultura mexicana con música, danza, arte y tradiciones en vivo.</p>
+            <button class="btn-buscar">Buscar Actividades</button>
+        </div>
+        
+        <div class="actividades-container">
+            <div class="actividad">
+                <img src="img/actividad1.jpg" alt="Buceo en cenote">
+                <h3>Buceo en Cenote</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Tulum, Quintana Roo</p>
+                <p><i class="fas fa-clock"></i> 3 horas</p>
+                <p><i class="fas fa-user-friends"></i> Guía certificado</p>
+                <p class="descripcion">Explora las maravillas subterráneas de los cenotes con equipo profesional.</p>
+                <p class="precio">$1,800 <span>/persona</span></p>
+                <button class="btn-reservar">Reservar</button>
+            </div>
+            
+            <div class="actividad">
+                <img src="img/actividad2.jpg" alt="Clase de cocina">
+                <h3>Clase de Cocina Mexicana</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Oaxaca, Oaxaca</p>
+                <p><i class="fas fa-clock"></i> 4 horas</p>
+                <p><i class="fas fa-utensils"></i> Comida incluida</p>
+                <p class="descripcion">Aprende a preparar mole, tlayudas y mezcal de manos de expertos.</p>
+                <p class="precio">$1,200 <span>/persona</span></p>
+                <button class="btn-reservar">Reservar</button>
+            </div>
+            
+            <div class="actividad">
+                <img src="img/actividad3.jpg" alt="Senderismo">
+                <h3>Senderismo en el Nevado</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Toluca, Estado de México</p>
+                <p><i class="fas fa-clock"></i> 6 horas</p>
+                <p><i class="fas fa-mountain"></i> Dificultad media</p>
+                <p class="descripcion">Disfruta de paisajes espectaculares en el volcán Nevado de Toluca.</p>
+                <p class="precio">$850 <span>/persona</span></p>
+                <button class="btn-reservar">Reservar</button>
+            </div>
+            
+            <div class="actividad">
+                <img src="img/actividad4.jpg" alt="Lucha libre">
+                <h3>Lucha Libre Mexicana</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Ciudad de México</p>
+                <p><i class="fas fa-clock"></i> 3 horas</p>
+                <p><i class="fas fa-theater-masks"></i> Espectáculo</p>
+                <p class="descripcion">Vive la emoción de la lucha libre en la Arena México con transporte incluido.</p>
+                <p class="precio">$650 <span>/persona</span></p>
+                <button class="btn-reservar">Reservar</button>
+            </div>
+            
+            <div class="actividad">
+                <img src="img/actividad5.jpg" alt="Avistamiento ballenas">
+                <h3>Avistamiento de Ballenas</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Los Cabos, Baja California</p>
+                <p><i class="fas fa-clock"></i> 4 horas</p>
+                <p><i class="fas fa-water"></i> Temporada: Diciembre-Abril</p>
+                <p class="descripcion">Navega para ver ballenas jorobadas en su hábitat natural con guías expertos.</p>
+                <p class="precio">$1,500 <span>/persona</span></p>
+                <button class="btn-reservar">Reservar</button>
             </div>
         </div>
     </section>
@@ -55,7 +118,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>MexiViajes</h3>
-                <p>La mejor agencia de viajes en México, explorando cada rincón del país desde 2010.</p>
+                <p>La mejor agencia de viajes en México, explorando cada rincón del país desde 2008.</p>
             </div>
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>
@@ -83,13 +146,14 @@
                     <li><a href="#">Términos y Condiciones</a></li>
                     <li><a href="#">Política de Privacidad</a></li>
                     <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cancelaciones</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 MexiViajes. Todos los derechos reservados. Creado en marzo por Susi.</p>
+            <p>&copy; 2025 MexiViajes. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

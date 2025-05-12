@@ -1,92 +1,66 @@
-// Datos para los destinos (10 estados de México)
-const estados = [
-    {
-        nombre: "Ciudad de México",
-        descripcion: "La capital del país, llena de historia, cultura y vida nocturna vibrante.",
-        hoteles: [
-            { nombre: "Gran Hotel Ciudad de México", precio: "$1,500/noche" },
-            { nombre: "Hotel Histórico Central", precio: "$1,200/noche" }
-        ]
-    },
-    {
-        nombre: "Quintana Roo",
-        descripcion: "Hogar de Cancún, Playa del Carmen y Tulum, con playas paradisíacas.",
-        hoteles: [
-            { nombre: "Resort Paradisus Cancún", precio: "$2,500/noche" },
-            { nombre: "Hotel Boutique Tulum", precio: "$1,800/noche" }
-        ]
-    },
-    // Agregar los otros 8 estados aquí...
-];
-
-// Datos para vuelos
-const vuelos = [
-    {
-        origen: "Ciudad de México",
-        destino: "Cancún",
-        fecha: "15/06/2025",
-        hora: "08:30 AM",
-        precio: "$2,400"
-    },
-    // Más vuelos...
-];
-
-// Datos para autos
-const autos = [
-    {
-        modelo: "Nissan Versa",
-        tipo: "Económico",
-        precio: "$800/día",
-        paquete: "Incluye seguro básico y kilometraje ilimitado"
-    },
-    // Más autos...
-];
-
-// Función para cargar datos en la página de destinos
-function cargarDestinos() {
-    if (document.getElementById('destinos-container')) {
-        const container = document.getElementById('destinos-container');
-        estados.forEach(estado => {
-            const div = document.createElement('div');
-            div.className = 'feature';
-            div.innerHTML = `
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>${estado.nombre}</h3>
-                <p>${estado.descripcion}</p>
-                <div class="hoteles">
-                    <h4>Hoteles disponibles:</h4>
-                    <ul>
-                        ${estado.hoteles.map(hotel => `<li>${hotel.nombre} - ${hotel.precio}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
-            container.appendChild(div);
-        });
-    }
-}
-
-// Función para cargar vuelos
-function cargarVuelos() {
-    if (document.getElementById('vuelos-container')) {
-        const container = document.getElementById('vuelos-container');
-        vuelos.forEach(vuelo => {
-            const div = document.createElement('div');
-            div.className = 'feature';
-            div.innerHTML = `
-                <i class="fas fa-plane"></i>
-                <h3>${vuelo.origen} → ${vuelo.destino}</h3>
-                <p>Fecha: ${vuelo.fecha}</p>
-                <p>Hora: ${vuelo.hora}</p>
-                <p>Precio: ${vuelo.precio}</p>
-            `;
-            container.appendChild(div);
-        });
-    }
-}
-
-// Cargar datos cuando la página esté lista
 document.addEventListener('DOMContentLoaded', function() {
-    cargarDestinos();
-    cargarVuelos();
-    // Otras funciones de carga...
+    // Manejar clics en botones de reserva
+    const reservarButtons = document.querySelectorAll('.btn-reservar, .btn-contratar');
+    reservarButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const servicio = this.closest('.hotel, .tour, .actividad, .seguro, .playa').querySelector('h3').textContent;
+            alert(`Has seleccionado reservar: ${servicio}\nSerás redirigido al proceso de pago.`);
+            // Aquí iría la lógica para redirigir al proceso de reserva/pago
+        });
+    });
+
+    // Manejar el formulario de contacto
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+    }
+
+    // Simular búsqueda en filtros
+    const buscarButtons = document.querySelectorAll('.btn-buscar');
+    buscarButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const seccion = this.closest('section').querySelector('h2').textContent;
+            alert(`Buscando opciones en ${seccion}...`);
+            // Aquí iría la lógica para filtrar resultados
+        });
+    });
+
+    // Actualizar año en el footer
+    const yearSpan = document.querySelector('.footer-bottom p');
+    if (yearSpan) {
+        const currentYear = new Date().getFullYear();
+        yearSpan.textContent = yearSpan.textContent.replace('2025', currentYear);
+    }
+});
+
+// Funcionalidad para el carrusel de imágenes (si se implementa)
+function initCarousels() {
+    // Implementación de carruseles si se necesitan
+}
+
+// Funcionalidad para el menú móvil (si se implementa)
+function initMobileMenu() {
+    const menuButton = document.createElement('button');
+    menuButton.className = 'mobile-menu-button';
+    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+    
+    const header = document.querySelector('header');
+    if (header) {
+        header.prepend(menuButton);
+        
+        menuButton.addEventListener('click', function() {
+            const nav = document.querySelector('.main-nav');
+            nav.classList.toggle('show');
+        });
+    }
+}
+
+// Inicializar funciones cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    initCarousels();
+    initMobileMenu();
 });
