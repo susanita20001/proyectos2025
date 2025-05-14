@@ -206,7 +206,7 @@ function generatePDF() {
     doc.setFontSize(10);
     doc.setTextColor(100);
     doc.text('¡Gracias por su compra!', 105, yPos + 30, null, null, 'center');
-    doc.text('Contacto: pizzería@ejemplo.com - Tel: 555-1234', 105, yPos + 35, null, null, 'center');
+    doc.text('Contacto: sht23413070030463@cecyteh.edu.mx - Tel:779-134-1560', 105, yPos + 35, null, null, 'center');
     
     // Guardar el PDF
     doc.save(`ticket_pizzeria_${nombre.replace(' ', '_')}.pdf`);
