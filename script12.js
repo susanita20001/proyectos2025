@@ -136,3 +136,121 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// Agrega esto al final de tu script12.js
+
+// Función para generar el PDF del ticket
+function generatePDF() {
+    // Obtener los datos del localStorage
+    const nombre = localStorage.getItem('nombre');
+    const total = localStorage.getItem('total');
+    const pizza1 = localStorage.getItem('pizza1');
+    const pizza2 = localStorage.getItem('pizza2');
+    const pizza3 = localStorage.getItem('pizza3');
+    const complementos = JSON.parse(localStorage.getItem('complementos'));
+    const fecha = new Date().toLocaleDateString();
+    
+    // Crear instancia de jsPDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Configuración del documento
+    doc.setFontSize(18);
+    doc.setTextColor(40);
+    doc.text('Pizzería - Ticket de Compra', 105, 15, null, null, 'center');
+    
+    // Línea divisoria
+    doc.setDrawColor(200);
+    doc.line(20, 20, 190, 20);
+    
+    // Información del cliente
+    doc.setFontSize(12);
+    doc.text(`Cliente: ${nombre}`, 20, 30);
+    doc.text(`Fecha: ${fecha}`, 20, 40);
+    doc.text(`N° de Pedido: ${Math.floor(Math.random() * 10000)}`, 20, 50);
+    
+    // Detalles del pedido
+    doc.setFontSize(14);
+    doc.text('Detalles del Pedido:', 20, 65);
+    
+    // Tabla de productos
+    let yPos = 75;
+    doc.setFontSize(12);
+    
+    // Pizzas
+    doc.text(`- ${pizza1}`, 20, yPos);
+    yPos += 10;
+    doc.text(`- ${pizza2}`, 20, yPos);
+    yPos += 10;
+    doc.text(`- ${pizza3}`, 20, yPos);
+    yPos += 10;
+    
+    // Complementos
+    if (complementos.length > 0) {
+        doc.text('Complementos:', 20, yPos);
+        yPos += 10;
+        complementos.forEach(comp => {
+            doc.text(`- ${comp}`, 25, yPos);
+            yPos += 10;
+        });
+    }
+    
+    // Total
+    doc.setFontSize(14);
+    doc.text(`Total: $${total}`, 20, yPos + 10);
+    
+    // Método de pago (recuperar del localStorage si está disponible)
+    const metodoPago = localStorage.getItem('metodoPago') || 'No especificado';
+    doc.text(`Método de pago: ${metodoPago}`, 20, yPos + 20);
+    
+    // Información de contacto
+    doc.setFontSize(10);
+    doc.setTextColor(100);
+    doc.text('¡Gracias por su compra!', 105, yPos + 30, null, null, 'center');
+    doc.text('Contacto: pizzería@ejemplo.com - Tel: 555-1234', 105, yPos + 35, null, null, 'center');
+    
+    // Guardar el PDF
+    doc.save(`ticket_pizzeria_${nombre.replace(' ', '_')}.pdf`);
+}
+
+// Agregar esta línea para que la función sea accesible desde el HTML
+window.generatePDF = generatePDF;
+
+// Modificar los listeners de los formularios de pago para guardar el método de pago
+document.addEventListener('DOMContentLoaded', function () {
+    // ... (tu código existente)
+    
+    // En entrega-local-form y envio-form, cuando se selecciona el método de pago
+    if (document.getElementById('entrega-local-form')) {
+        document.getElementById('entrega-local-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const pago = document.querySelector('input[name="pago"]:checked').value;
+            localStorage.setItem('metodoPago', pago === 'tarjeta' ? 'Tarjeta' : 'Efectivo');
+            
+            if (pago === 'tarjeta') {
+                window.location.href = 'tarjeta.html';
+            } else if (pago === 'efectivo') {
+                window.location.href = 'efectivo.html';
+            }
+        });
+    }
+    
+    if (document.getElementById('envio-form')) {
+        document.getElementById('envio-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const pago = document.querySelector('input[name="pago"]:checked').value;
+            localStorage.setItem('metodoPago', pago === 'tarjeta' ? 'Tarjeta' : 'Efectivo');
+            
+            if (pago === 'tarjeta') {
+                window.location.href = 'tarjeta.html';
+            } else if (pago === 'efectivo') {
+                window.location.href = 'efectivo.html';
+            }
+        });
+    }
+    
+    // En final.html, generar el PDF automáticamente
+    if (window.location.pathname.includes('final.html')) {
+        // Esperar un momento para que se carguen las librerías
+        setTimeout(generatePDF, 500);
+    }
+});
