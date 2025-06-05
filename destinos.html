@@ -3,10 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinos - MexiViajes</title>
-    <link rel="stylesheet" href="styles.css">
-           <link rel="stylesheet" href="styles2.css">
+    <title>MexiViajes - Explorando México</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        :root {
+            --primary: #e63946;
+            --secondary: #457b9d;
+            --dark: #1d3557;
+            --light: #f1faee;
+            --accent: #a8dadc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .logo p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navegación */
+        .main-nav {
+            margin-top: 1rem;
+        }
+        
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 0.5rem;
+        }
+        
+        .nav-list li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .nav-list li a:hover, .nav-list li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d62839;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(69, 123, 157, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #3a6a8a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(69, 123, 157, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* Sección de ofertas */
+        .about {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .about h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .feature p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature .btn-secondary {
+            width: 100%;
+            padding: 0.7rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 0.7;
+        }
+        
+        .footer-section i {
+            margin-right: 0.5rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,11 +330,11 @@
         </div>
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="marhotel.html"><i class="fas fa-home"></i> Inicio</a></li>
-                <li><a href="destinos.html" class="active"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
+                <li><a href="marhotel.html" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="destinos.html"><i class="fas fa-map-marked-alt"></i> Destinos</a></li>
                 <li><a href="hoteles.html"><i class="fas fa-hotel"></i> Hoteles</a></li>
                 <li><a href="vuelos.html"><i class="fas fa-plane"></i> Vuelos</a></li>
-                <li><a href="rentaautos.html"><i class="fas fa-car"></i> Autos</a></li>
+                <li><a href="rentautos.html"><i class="fas fa-car"></i> Autos</a></li>
                 <li><a href="tours.html"><i class="fas fa-route"></i> Tours</a></li>
                 <li><a href="actividades.html"><i class="fas fa-hiking"></i> Actividades</a></li>
                 <li><a href="seguros.html"><i class="fas fa-shield-alt"></i> Seguros</a></li>
@@ -30,154 +344,80 @@
         </nav>
     </header>
 
-    <section class="destinations">
-        <h2>Explora los estados de México</h2>
-        <p>Descubre la diversidad cultural y natural de nuestro país</p>
-        
-        <div class="destination-grid">
-           
-            <div class="destination-card">
-                <img src="cdmx.jpg" alt="Ciudad de México">
-                <h3>Ciudad de México</h3>
-                <p>La capital del país, llena de historia, cultura y gastronomía.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 250+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,200</span>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Explora México con nosotros</h2>
+            <p>MexiViajes es una agencia creada por Susi en marzo para ayudarte a vivir experiencias inolvidables.</p>
+            <a href="destinos.html" class="btn btn-primary">Descubre nuestros destinos</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>Ofertas Especiales</h2>
+        <div class="features">
+            <div class="feature">
+                <img src="cancun.jpg" alt="Oferta Cancún">
+                <div class="feature-content">
+                    <h3>Paquete Cancún Todo Incluido</h3>
+                    <p>Disfruta de 5 días y 4 noches en los mejores resorts todo incluido con vuelos y traslados.</p>
+                    <p class="price">Desde <strong>$12,500</strong> por persona</p>
+                    <button class="btn btn-secondary">Ver paquete completo</button>
                 </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
             </div>
-           
-            
-            <div class="destination-card">
-                <img src="guadalajara.jpg" alt="Jalisco">
-                <h3>Jalisco</h3>
-                <p>Cuna del tequila, mariachi y ricas tradiciones.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 180+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,500</span>
+            <div class="feature">
+                <img src="cdmx.jpg" alt="Oferta CDMX">
+                <div class="feature-content">
+                    <h3>Fin de semana en Ciudad de México</h3>
+                    <p>Tour cultural por los principales atractivos de la capital con alojamiento en hotel boutique.</p>
+                    <p class="price">Desde <strong>$3,800</strong> por persona</p>
+                    <button class="btn btn-secondary">Ver paquete completo</button>
                 </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
             </div>
-            <div class="destination-card">
-                <img src="quintanaroo.jpg" alt="Quintana Roo">
-                <h3>Quintana Roo</h3>
-                <p>Paraíso caribeño con las mejores playas de México.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 300+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $2,800</span>
+            <div class="feature">
+                <img src="chiapas.jpg" alt="Oferta Chiapas">
+                <div class="feature-content">
+                    <h3>Aventura en Chiapas</h3>
+                    <p>7 días explorando cascadas, ruinas mayas y la selva lacandona con guías expertos.</p>
+                    <p class="price">Desde <strong>$8,900</strong> por persona</p>
+                    <button class="btn btn-secondary">Ver paquete completo</button>
                 </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-            <div class="destination-card">
-                <img src="oaxaca.jpg" alt="Oaxaca">
-                <h3>Oaxaca</h3>
-                <p>Rica cultura, gastronomía y playas espectaculares.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 120+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,900</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-        
-            
-            <div class="destination-card">
-                <img src="chiapas.jpg" alt="Chiapas">
-                <h3>Chiapas</h3>
-                <p>Naturaleza exuberante y sitios arqueológicos mayas.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 90+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $2,100</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-         
-            <div class="destination-card">
-                <img src="guanajuato.jpg" alt="Guanajuato">
-                <h3>Guanajuato</h3>
-                <p>Ciudades coloniales y festivales culturales.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 110+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,700</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-    
-            <div class="destination-card">
-                <img src="yucatan.jpg" alt="Yucatán">
-                <h3>Yucatán</h3>
-                <p>Cenotes, haciendas y la cultura maya viva.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 150+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $2,300</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-       
-            <div class="destination-card">
-                <img src="baja.jpg" alt="Baja California">
-                <h3>Baja California</h3>
-                <p>Playas, vino y paisajes desérticos únicos.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 130+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $2,500</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-        
-            <div class="destination-card">
-                <img src="puebla.jpg" alt="Puebla">
-                <h3>Puebla</h3>
-                <p>Arquitectura barroca y la mejor gastronomía.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 100+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,400</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
-            </div>
-            
-            
-            <div class="destination-card">
-                <img src="michoacan.jpg" alt="Michoacán">
-                <h3>Michoacán</h3>
-                <p>Pueblos mágicos, lagos y reservas naturales.</p>
-                <div class="destination-info">
-                    <span><i class="fas fa-hotel"></i> 80+ hoteles</span>
-                    <span><i class="fas fa-plane"></i> Vuelos desde $1,600</span>
-                </div>
-                <a href="#" class="btn-secondary">Ver paquetes</a>
             </div>
         </div>
-      
+    </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>MexiViajes</h3>
-                <p>Creado por Susi en marzo. Tu agencia de viajes confiable para explorar México.</p>
+                <p>Agencia creada por Susi. Llevamos la magia de México a cada rincón del mundo con experiencias auténticas y memorables.</p>
+                <div class="social-icons" style="margin-top: 1rem;">
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="marhotel.html">Inicio</a></li>
-                    <li><a href="destinos.html">Destinos</a></li>
-                    <li><a href="hoteles.html">Hoteles</a></li>
-                    <li><a href="vuelos.html">Vuelos</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="marhotel.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="destinos.html"><i class="fas fa-chevron-right"></i> Destinos</a></li>
+                    <li><a href="hoteles.html"><i class="fas fa-chevron-right"></i> Hoteles</a></li>
+                    <li><a href="vuelos.html"><i class="fas fa-chevron-right"></i> Vuelos</a></li>
+                    <li><a href="contacto.html"><i class="fas fa-chevron-right"></i> Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Contacto</h3>
-                <p><i class="fas fa-phone"></i> 55 1234 5678</p>
+                <p><i class="fas fa-phone"></i> 779 134 1560 </p>
                 <p><i class="fas fa-envelope"></i> sht23413070030463@cecyteh.edu.mx</p>
-                <p><i class="fas fa-map-marker-alt"></i> Av. Reforma 123, CDMX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av.Fuentes de Artemisa Mz.4 Lt.77</p>
+                <a href="contacto.html" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Contáctanos</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MexiViajes. Todos los derechos reservados.</p>
+            <p>&copy; 2025 MexiViajes. Proyecto creado por Susi. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
-       <script src="holascript.js"></script>
 </body>
 </html>
