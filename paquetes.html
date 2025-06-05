@@ -87,7 +87,7 @@
             </div>
             
             <div class="packages-grid" id="packages-grid">
-                <!-- Paquetes se cargarán dinámicamente desde la API -->
+                
             </div>
         </div>
     </section>
@@ -97,7 +97,7 @@
             <h2>Ventajas de reservar un paquete</h2>
             <div class="benefits-grid">
                 <div class="benefit">
-                    <i class="fas fa-euro-sign"></i>
+                    <i class="fas fa-pesos-sign"></i>
                     <h3>Ahorro económico</h3>
                     <p>Reservando vuelo y hotel juntos puedes ahorrar hasta un 30%.</p>
                 </div>
@@ -124,8 +124,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>ExploraMundo</h3>
-                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2010.</p>
+                    <h3>ExploraMundo Con susi</h3>
+                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2025.</p>
                     <div class="socials">
     <a href="https://www.facebook.com/susitorres" target="_blank"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/susi_hdz_t" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -167,7 +167,7 @@
                     title: 'Todo Incluido en Caribe',
                     destination: 'Punta Cana, República Dominicana',
                     description: '7 noches en resort 5* con todo incluido + vuelos + traslados.',
-                    image: 'images/paquete1.jpg',
+                    image: 'paquete1.jpg',
                     price: 1299,
                     days: 8,
                     category: 'beach',
@@ -242,7 +242,6 @@
                 }
             ];
 
-            // Mostrar paquetes
             function displayPackages(packages) {
                 const container = document.getElementById('packages-grid');
                 container.innerHTML = '';
@@ -266,7 +265,7 @@
                             <p class="package-description">${pkg.description}</p>
                             <div class="package-details">
                                 <p><i class="fas fa-calendar-alt"></i> ${pkg.days} días</p>
-                                <p><i class="fas fa-euro-sign"></i> Desde ${pkg.price}</p>
+                                <p><i class="fas fa-pesos-sign"></i> Desde $${pkg.price}</p>
                             </div>
                             <div class="package-includes">
                                 <h4>Incluye:</h4>
@@ -281,7 +280,6 @@
                 });
             }
 
-            // Filtrar paquetes por región
             function filterPackages(region) {
                 if (region === 'all') {
                     displayPackages(mockPackages);
@@ -291,15 +289,15 @@
                 }
             }
 
-            // Event listeners para pestañas
+           
             const tabButtons = document.querySelectorAll('.tab-btn');
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Quitar clase active de todos los botones
+                  
                     tabButtons.forEach(btn => btn.classList.remove('active'));
-                    // Añadir clase active al botón clickeado
+                  
                     this.classList.add('active');
-                    // Filtrar paquetes
+                    
                     filterPackages(this.dataset.tab);
                 });
             });

@@ -16,7 +16,7 @@
             <a href="index.html" class="logo">Explora<span>Mundo</span></a>
             <nav class="nav">
                 <ul>
-                    <li><a href="marhotel.html">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="destinos.html">Destinos</a></li>
                     <li><a href="ofertas.html">Ofertas</a></li>
                     <li><a href="paquetes.html">Paquetes</a></li>
@@ -81,10 +81,6 @@
                             <input type="tel" id="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="dni">DNI/Pasaporte*</label>
-                            <input type="text" id="dni" required>
-                        </div>
-                        <div class="form-group">
                             <label for="dob">Fecha de Nacimiento*</label>
                             <input type="date" id="dob" required>
                         </div>
@@ -94,7 +90,6 @@
                     </div>
                 </div>
                 
-                <!-- Paso 2: Detalles del Viaje -->
                 <div class="form-step" data-step="2">
                     <h2>Detalles de tu Viaje</h2>
                     <div class="travel-details">
@@ -102,7 +97,7 @@
                             <h3 id="booking-destination-name">Selecciona un destino</h3>
                             <p id="booking-destination-description"></p>
                             <div class="destination-meta">
-                                <span class="price" id="booking-price">€0</span>
+                                <span class="price" id="booking-price">$0</span>
                                 <span class="rating" id="booking-rating"></span>
                             </div>
                         </div>
@@ -146,7 +141,6 @@
                     </div>
                 </div>
                 
-                <!-- Paso 3: Pago -->
                 <div class="form-step" data-step="3">
                     <h2>Información de Pago</h2>
                     <div class="payment-summary">
@@ -165,15 +159,15 @@
                         </div>
                         <div class="summary-item">
                             <span>Precio Base:</span>
-                            <span id="summary-base-price">€0</span>
+                            <span id="summary-base-price">$0</span>
                         </div>
                         <div class="summary-item">
                             <span>Servicios Adicionales:</span>
-                            <span id="summary-services">€0</span>
+                            <span id="summary-services">$0</span>
                         </div>
                         <div class="summary-item total">
                             <span>Total:</span>
-                            <span id="summary-total">€0</span>
+                            <span id="summary-total">$0</span>
                         </div>
                     </div>
                     
@@ -202,7 +196,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="card-cvv">CVV*</label>
-                                    <input type="text" id="card-cvv" required maxlength="4">
+                                    <input type="text" id="card-cvv" required maxlength="3">
                                 </div>
                             </div>
                         </div>
