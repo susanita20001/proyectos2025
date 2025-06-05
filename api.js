@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 1,
                 name: 'París, Francia',
                 description: 'La ciudad del amor, llena de historia, cultura y romance.',
-                image: 'images/paris.jpg',
+                image: 'imagenes/paris.jpg',
                 price: '10,000',
                 rating: '★★★★★'
             },
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 2,
                 name: 'Tokio, Japón',
                 description: 'Una mezcla fascinante de tradición y modernidad.',
-                image: 'images/tokyo.jpg',
+                image: 'imagenes/tokyo.jpg',
                 price: '12,500',
                 rating: '★★★★☆'
             },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 3,
                 name: 'Nueva York, USA',
                 description: 'La ciudad que nunca duerme, llena de energía y posibilidades.',
-                image: 'images/nyc.jpg',
+                image: 'imagenes/nyc.jpg',
                 price: '14,000',
                 rating: '★★★★★'
             },
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: 4,
                 name: 'Santorini, Grecia',
                 description: 'Islas paradisíacas con impresionantes vistas al mar Egeo.',
-                image: 'images/santorini.jpg',
+                image: 'imagenes/santorini.jpg',
                 price: '10,000',
                 rating: '★★★★☆'
             }
