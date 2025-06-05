@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas | ExploraMundo</title>
+    <link rel="stylesheet" href="styles20.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Incluir jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Explora<span>Mundo</span></a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="paquetes.html">Paquetes</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/booking-bg.jpg');">
+        <div class="container">
+            <h1>Reserva tu Viaje</h1>
+            <p>Estás a un paso de vivir una experiencia inolvidable</p>
+        </div>
+    </section>
+
+    <section class="booking-process">
+        <div class="container">
+            <div class="process-steps">
+                <div class="step active" data-step="1">
+                    <span>1</span>
+                    <p>Datos Personales</p>
+                </div>
+                <div class="step" data-step="2">
+                    <span>2</span>
+                    <p>Detalles del Viaje</p>
+                </div>
+                <div class="step" data-step="3">
+                    <span>3</span>
+                    <p>Pago</p>
+                </div>
+                <div class="step" data-step="4">
+                    <span>4</span>
+                    <p>Confirmación</p>
+                </div>
+            </div>
+            
+            <form id="booking-form">
+                <!-- Paso 1: Datos Personales -->
+                <div class="form-step active" data-step="1">
+                    <h2>Tus Datos Personales</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="first-name">Nombre*</label>
+                            <input type="text" id="first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Apellidos*</label>
+                            <input type="text" id="last-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono*</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">DNI/Pasaporte*</label>
+                            <input type="text" id="dni" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Fecha de Nacimiento*</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn next-step">Siguiente</button>
+                    </div>
+                </div>
+                
+                <!-- Paso 2: Detalles del Viaje -->
+                <div class="form-step" data-step="2">
+                    <h2>Detalles de tu Viaje</h2>
+                    <div class="travel-details">
+                        <div class="destination-info">
+                            <h3 id="booking-destination-name">Selecciona un destino</h3>
+                            <p id="booking-destination-description"></p>
+                            <div class="destination-meta">
+                                <span class="price" id="booking-price">€0</span>
+                                <span class="rating" id="booking-rating"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travel-date">Fecha de Viaje*</label>
+                            <input type="date" id="travel-date" required min="">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travelers">Número de Viajeros*</label>
+                            <select id="travelers" required>
+                                <option value="1">1 Viajero</option>
+                                <option value="2" selected>2 Viajeros</option>
+                                <option value="3">3 Viajeros</option>
+                                <option value="4">4 Viajeros</option>
+                                <option value="5">5 Viajeros</option>
+                                <option value="6+">6+ Viajeros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Servicios Adicionales</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="insurance" name="services" value="insurance" data-price="49">
+                                <label for="insurance">Seguro de Viaje (+4900)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="transfers" name="services" value="transfers" data-price="29">
+                                <label for="transfers">Traslados Aeropuerto (+2900)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="excursions" name="services" value="excursions" data-price="99">
+                                <label for="excursions">Excursiones Guiadas (+990)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn prev-step">Anterior</button>
+                        <button type="button" class="btn next-step">Siguiente</button>
+                    </div>
+                </div>
+                
+                <!-- Paso 3: Pago -->
+                <div class="form-step" data-step="3">
+                    <h2>Información de Pago</h2>
+                    <div class="payment-summary">
+                        <h3>Resumen de tu Reserva</h3>
+                        <div class="summary-item">
+                            <span>Destino:</span>
+                            <span id="summary-destination"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Fecha:</span>
+                            <span id="summary-date"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Viajeros:</span>
+                            <span id="summary-travelers"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Precio Base:</span>
+                            <span id="summary-base-price">€0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Servicios Adicionales:</span>
+                            <span id="summary-services">€0</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <span id="summary-total">€0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h3>Método de Pago</h3>
+                        <div class="payment-options">
+                            <div class="payment-option">
+                                <input type="radio" id="credit-card" name="payment" value="credit-card" checked>
+                                <label for="credit-card">Tarjeta de Crédito</label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="paypal" name="payment" value="paypal">
+                                <label for="paypal">PayPal</label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                                <label for="bank-transfer">Transferencia Bancaria</label>
+                            </div>
+                        </div>
+                        
+                        <div class="credit-card-form" id="credit-card-form">
+                            <div class="form-group">
+                                <label for="card-number">Número de Tarjeta*</label>
+                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required maxlength="16">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-name">Nombre en la Tarjeta*</label>
+                                <input type="text" id="card-name" required>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="card-expiry">Fecha de Expiración*</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/AA" required maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-cvv">CVV*</label>
+                                    <input type="text" id="card-cvv" required maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn prev-step">Anterior</button>
+                        <button type="submit" class="btn">Confirmar y Pagar</button>
+                    </div>
+                </div>
+                
+                <!-- Paso 4: Confirmación -->
+                <div class="form-step" data-step="4">
+                    <div class="confirmation">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>¡Reserva Confirmada!</h2>
+                        <p>Gracias por reservar con ExploraMundo. Hemos enviado los detalles de tu reserva a tu email.</p>
+                        <div class="confirmation-details">
+                            <p><strong>Código de Reserva:</strong> <span id="booking-code"></span></p>
+                            <p><strong>Destino:</strong> <span id="confirmation-destination"></span></p>
+                            <p><strong>Fecha:</strong> <span id="confirmation-date"></span></p>
+                            <p><strong>Viajeros:</strong> <span id="confirmation-travelers"></span></p>
+                            <p><strong>Total Pagado:</strong> <span id="confirmation-total"></span></p>
+                        </div>
+                        <button id="download-ticket" class="btn">Descargar Ticket (PDF)</button>
+                        <a href="index.html" class="btn btn-outline">Volver al Inicio</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+   
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ExploraMundo</h3>
+                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2010.</p>
+                    <div class="socials">
+                        <a href="https://www.facebook.com/susitorres" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/susi_hdz_t" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div> 
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="destinos.html">Destinos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="paquetes.html">Paquetes</a></li>
+                             <li><a href="seguros.html">Seguros</a></li>
+                                <li><a href="contacto.html">Contactó </a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Fuentes de Artemisa</li>
+                        <li><i class="fas fa-phone"></i> +52 779 134 1560</li>
+                        <li><i class="fas fa-envelope"></i> sht23413070030463@cecyteh.edu.mx</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ExploraMundo.</p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="reservas.js"></script>
+</body>
+</html>

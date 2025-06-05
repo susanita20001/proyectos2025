@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos | ExploraMundo</title>
+    <link rel="stylesheet" href="styles20.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Explora<span>Mundo</span></a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="destinos.html" class="active">Destinos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="paquetes.html">Paquetes</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/destinations-bg.jpg');">
+        <div class="container">
+            <h1>Nuestros Destinos</h1>
+            <p>Explora los lugares más increíbles del mundo</p>
+        </div>
+    </section>
+
+    <section class="destinations-filter">
+        <div class="container">
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="continent">Continente:</label>
+                    <select id="continent">
+                        <option value="all">Todos</option>
+                        <option value="europe">Europa</option>
+                        <option value="asia">Asia</option>
+                        <option value="america">América</option>
+                        <option value="africa">África</option>
+                        <option value="oceania">Oceanía</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-range">Rango de precios:</label>
+                    <select id="price-range">
+                        <option value="all">Todos</option>
+                        <option value="0-500">€0 - €500</option>
+                        <option value="500-1000">€500 - €1000</option>
+                        <option value="1000-1500">€1000 - €1500</option>
+                        <option value="1500+">€1500+</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="travel-type">Tipo de viaje:</label>
+                    <select id="travel-type">
+                        <option value="all">Todos</option>
+                        <option value="beach">Playa</option>
+                        <option value="mountain">Montaña</option>
+                        <option value="city">Ciudad</option>
+                        <option value="adventure">Aventura</option>
+                        <option value="cultural">Cultural</option>
+                    </select>
+                </div>
+                <button id="apply-filters" class="btn">Aplicar Filtros</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="all-destinations">
+        <div class="container">
+            <div class="destinations-grid" id="all-destinations">
+                <!-- Los destinos se cargarán dinámicamente desde la API -->
+            </div>
+            <div class="pagination">
+                <button class="btn" id="prev-page">Anterior</button>
+                <span id="page-info">Página 1 de 5</span>
+                <button class="btn" id="next-page">Siguiente</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>¿Listo para tu próxima aventura?</h2>
+            <p>Suscríbete para recibir las mejores ofertas y novedades de viaje</p>
+            <form id="newsletter-form-destinations">
+                <input type="email" placeholder="Tu dirección de email" required>
+                <button type="submit" class="btn">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+ 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ExploraMundo</h3>
+                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2010.</p>
+                    <div class="socials">
+    <a href="https://www.facebook.com/susitorres" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/susi_hdz_t" target="_blank"><i class="fab fa-instagram"></i></a>
+</div> 
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="destinos.html">Destinos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="paquetes.html">Paquetes</a></li>
+                     <li><a href="seguros.html">Seguros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Fuentes de Artemisa</li>
+                        <li><i class="fas fa-phone"></i> +52 779 134 1560</li>
+                        <li><i class="fas fa-envelope"></i> sht23413070030463@cecyteh.edu.mx</li>
+                    </ul>
+                </div>
+    
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ExploraMundo.</p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="api.js"></script>
+    <script>
+        // Script específico para destinos.html
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar más destinos (en un proyecto real, esto vendría de una API paginada)
+            const mockAllDestinations = [
+                // Europa
+                {
+                    id: 1,
+                    name: 'París, Francia',
+                    description: 'La ciudad del amor, llena de historia, cultura y romance.',
+                    image: 'images/paris.jpg',
+                    price: 899,
+                    rating: '★★★★★',
+                    continent: 'europe',
+                    type: 'city'
+                },
+                {
+                    id: 2,
+                    name: 'Roma, Italia',
+                    description: 'La ciudad eterna con una increíble historia y gastronomía.',
+                    image: 'images/rome.jpg',
+                    price: 799,
+                    rating: '★★★★☆',
+                    continent: 'europe',
+                    type: 'cultural'
+                },
+                // Asia
+                {
+                    id: 3,
+                    name: 'Tokio, Japón',
+                    description: 'Una mezcla fascinante de tradición y modernidad.',
+                    image: 'images/tokyo.jpg',
+                    price: 1299,
+                    rating: '★★★★☆',
+                    continent: 'asia',
+                    type: 'city'
+                },
+                // América
+                {
+                    id: 4,
+                    name: 'Nueva York, USA',
+                    description: 'La ciudad que nunca duerme, llena de energía y posibilidades.',
+                    image: 'images/nyc.jpg',
+                    price: 1099,
+                    rating: '★★★★★',
+                    continent: 'america',
+                    type: 'city'
+                },
+                // África
+                {
+                    id: 5,
+                    name: 'Marrakech, Marruecos',
+                    description: 'Una experiencia sensorial con colores, sabores y aromas únicos.',
+                    image: 'images/marrakech.jpg',
+                    price: 699,
+                    rating: '★★★★☆',
+                    continent: 'africa',
+                    type: 'cultural'
+                },
+                // Oceanía
+                {
+                    id: 6,
+                    name: 'Sídney, Australia',
+                    description: 'Playas espectaculares y una vibrante vida urbana.',
+                    image: 'images/sydney.jpg',
+                    price: 1499,
+                    rating: '★★★★★',
+                    continent: 'oceania',
+                    type: 'beach'
+                },
+                // Más destinos...
+                {
+                    id: 7,
+                    name: 'Bali, Indonesia',
+                    description: 'Paraíso tropical con playas de ensueño y cultura única.',
+                    image: 'images/bali.jpg',
+                    price: 1199,
+                    rating: '★★★★★',
+                    continent: 'asia',
+                    type: 'beach'
+                },
+                {
+                    id: 8,
+                    name: 'Alpes Suizos',
+                    description: 'Montañas impresionantes para los amantes de la naturaleza.',
+                    image: 'images/alps.jpg',
+                    price: 999,
+                    rating: '★★★★☆',
+                    continent: 'europe',
+                    type: 'mountain'
+                }
+            ];
+            
+            let currentPage = 1;
+            const destinationsPerPage = 6;
+            let filteredDestinations = [...mockAllDestinations];
+            
+            function displayDestinations(destinations) {
+                const container = document.getElementById('all-destinations');
+                
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                destinations.forEach(destination => {
+                    const card = document.createElement('div');
+                    card.className = 'destination-card';
+                    card.innerHTML = `
+                        <div class="destination-img">
+                            <img src="${destination.image}" alt="${destination.name}">
+                        </div>
+                        <div class="destination-info">
+                            <h3>${destination.name}</h3>
+                            <p>${destination.description}</p>
+                            <div class="destination-meta">
+                                <span class="price">Desde €${destination.price}</span>
+                                <span class="rating">${destination.rating}</span>
+                            </div>
+                            <a href="reservas.html?destination=${destination.id}" class="btn">Reservar</a>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+                
+                updatePagination();
+            }
+            
+            function filterDestinations() {
+                const continent = document.getElementById('continent').value;
+                const priceRange = document.getElementById('price-range').value;
+                const travelType = document.getElementById('travel-type').value;
+                
+                filteredDestinations = mockAllDestinations.filter(destination => {
+                    // Filtro por continente
+                    if (continent !== 'all' && destination.continent !== continent) {
+                        return false;
+                    }
+                    
+                    // Filtro por rango de precio
+                    if (priceRange !== 'all') {
+                        const [min, max] = priceRange.split('-').map(part => {
+                            if (part.endsWith('+')) {
+                                return parseInt(part);
+                            }
+                            return part ? parseInt(part) : null;
+                        });
+                        
+                        if (max === null) {
+                            if (destination.price < min) return false;
+                        } else {
+                            if (destination.price < min || destination.price > max) return false;
+                        }
+                    }
+                    
+                    // Filtro por tipo de viaje
+                    if (travelType !== 'all' && destination.type !== travelType) {
+                        return false;
+                    }
+                    
+                    return true;
+                });
+                
+                currentPage = 1;
+                displayPaginatedDestinations();
+            }
+            
+            function displayPaginatedDestinations() {
+                const startIndex = (currentPage - 1) * destinationsPerPage;
+                const endIndex = startIndex + destinationsPerPage;
+                const paginatedDestinations = filteredDestinations.slice(startIndex, endIndex);
+                
+                displayDestinations(paginatedDestinations);
+            }
+            
+            function updatePagination() {
+                const totalPages = Math.ceil(filteredDestinations.length / destinationsPerPage);
+                document.getElementById('page-info').textContent = `Página ${currentPage} de ${totalPages}`;
+                
+                document.getElementById('prev-page').disabled = currentPage === 1;
+                document.getElementById('next-page').disabled = currentPage === totalPages || totalPages === 0;
+            }
+            
+            // Event listeners
+            document.getElementById('apply-filters').addEventListener('click', filterDestinations);
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPaginatedDestinations();
+                }
+            });
+            document.getElementById('next-page').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredDestinations.length / destinationsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPaginatedDestinations();
+                }
+            });
+            
+            // Mostrar destinos iniciales
+            displayPaginatedDestinations();
+        });
+    </script>
+</body>
+</html>

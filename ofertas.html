@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas Especiales | ExploraMundo</title>
+    <link rel="stylesheet" href="styles20.css">
+     <link rel="stylesheet" href="redesstyles.css">
+    <link rel="stylesheet" href="animaciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Explora<span>Mundo</span></a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="ofertas.html" class="active">Ofertas</a></li>
+                    <li><a href="paquetes.html">Paquetes</a></li>
+                    <li><a href="seguros.html">Seguros</a></li>
+              
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/ofertas-bg.jpg');">
+        <div class="container">
+            <h1>Ofertas Especiales</h1>
+            <p>Aprovecha nuestras promociones exclusivas</p>
+        </div>
+    </section>
+
+    <section class="special-offers">
+        <div class="container">
+            <div class="offers-filter">
+                <div class="filter-group">
+                    <label for="offer-type">Tipo de Oferta:</label>
+                    <select id="offer-type">
+                        <option value="all">Todas</option>
+                        <option value="last-minute">Last Minute</option>
+                        <option value="early-booking">Reserva Anticipada</option>
+                        <option value="family">Familiares</option>
+                        <option value="all-inclusive">Todo Incluido</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="offer-destination">Destino:</label>
+                    <select id="offer-destination">
+                        <option value="all">Todos</option>
+                        <option value="europe">Europa</option>
+                        <option value="america">América</option>
+                        <option value="asia">Asia</option>
+                        <option value="africa">África</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="offer-sort">Ordenar por:</label>
+                    <select id="offer-sort">
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="discount">Mayor Descuento</option>
+                        <option value="date">Fecha de Salida</option>
+                    </select>
+                </div>
+                <button id="apply-offer-filters" class="btn">Filtrar</button>
+            </div>
+
+            <div class="offers-grid" id="offers-grid">
+                <!-- Ofertas se cargarán dinámicamente desde la API -->
+            </div>
+
+            <div class="offer-banner">
+                <div class="banner-content">
+                    <h3>¡Oferta Flash!</h3>
+                    <h2>50% de Descuento</h2>
+                    <p>Solo hoy en todos los destinos del Caribe. ¡No te lo pierdas!</p>
+                    <a href="#" class="btn">Ver Ofertas</a>
+                </div>
+                <div class="banner-timer">
+                    <div class="timer-item">
+                        <span id="hours">12</span>
+                        <small>Horas</small>
+                    </div>
+                    <div class="timer-item">
+                        <span id="minutes">45</span>
+                        <small>Minutos</small>
+                    </div>
+                    <div class="timer-item">
+                        <span id="seconds">30</span>
+                        <small>Segundos</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ExploraMundo</h3>
+                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2010.</p>
+                    <div class="socials">
+    <a href="https://www.facebook.com/susitorres" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/susi_hdz_t" target="_blank"><i class="fab fa-instagram"></i></a>
+</div> 
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="destinos.html">Destinos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="paquetes.html">Paquetes</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Fuentes de Artemisa</li>
+                        <li><i class="fas fa-phone"></i> +52 779 134 1560</li>
+                        <li><i class="fas fa-envelope"></i> sht23413070030463@cecyteh.edu.mx</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Suscríbete para recibir ofertas exclusivas.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Tu email">
+                        <button type="submit" class="btn">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ExploraMundo.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Script específico para ofertas.html
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mock data - en un proyecto real esto vendría de una API
+            const mockOffers = [
+                {
+                    id: 1,
+                    title: 'Last Minute: Cancún Todo Incluido',
+                    destination: 'Cancún, México',
+                    description: 'Disfruta de 7 noches en un resort 5 estrellas con todo incluido.',
+                    image: 'images/oferta1.jpg',
+                    originalPrice: 10000,
+                    discountPrice: 9000,
+                    discount: 30,
+                    type: 'last-minute',
+                    category: 'all-inclusive',
+                    date: '2023-11-15',
+                    days: 7,
+                    rating: 4.5
+                },
+                {
+                    id: 2,
+                    title: 'Reserva Anticipada: París Romántico',
+                    destination: 'París, Francia',
+                    description: 'Vuelo + Hotel 4 noches en el corazón de París con desayuno incluido.',
+                    image: 'images/oferta2.jpg',
+                    originalPrice: 7990,
+                    discountPrice: 6490,
+                    discount: 20,
+                    type: 'early-booking',
+                    category: 'city',
+                    date: '2024-02-14',
+                    days: 4,
+                    rating: 4.8
+                },
+                {
+                    id: 3,
+                    title: 'Paquete Familiar: Orlando Parks',
+                    destination: 'Orlando, USA',
+                    description: 'Entradas a 3 parques temáticos + alojamiento para familia de 4.',
+                    image: 'images/oferta3.jpg',
+                    originalPrice: 29000,
+                    discountPrice: 23990,
+                    discount: 20,
+                    type: 'family',
+                    category: 'theme-park',
+                    date: '2023-12-20',
+                    days: 8,
+                    rating: 4.7
+                },
+                {
+                    id: 4,
+                    title: 'Escapada a Barcelona',
+                    destination: 'Barcelona, España',
+                    description: 'Fin de semana en Barcelona con vuelo y hotel 3 estrellas.',
+                    image: 'images/oferta4.jpg',
+                    originalPrice: 39900,
+                    discountPrice: 29900,
+                    discount: 25,
+                    type: 'last-minute',
+                    category: 'city',
+                    date: '2023-10-28',
+                    days: 3,
+                    rating: 4.3
+                }
+            ];
+
+            // Mostrar ofertas
+            function displayOffers(offers) {
+                const container = document.getElementById('offers-grid');
+                container.innerHTML = '';
+
+                offers.forEach(offer => {
+                    const offerElement = document.createElement('div');
+                    offerElement.className = 'offer-card';
+                    offerElement.innerHTML = `
+                        <div class="offer-badge">-${offer.discount}%</div>
+                        <div class="offer-img">
+                            <img src="${offer.image}" alt="${offer.title}">
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-header">
+                                <h3>${offer.title}</h3>
+                                <div class="offer-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>${offer.rating}</span>
+                                </div>
+                            </div>
+                            <p class="offer-destination"><i class="fas fa-map-marker-alt"></i> ${offer.destination}</p>
+                            <p class="offer-description">${offer.description}</p>
+                            <div class="offer-details">
+                                <p><i class="fas fa-calendar-alt"></i> ${offer.days} días | Salida: ${formatDate(offer.date)}</p>
+                            </div>
+                            <div class="offer-prices">
+                                <span class="original-price">€${offer.originalPrice}</span>
+                                <span class="discount-price">€${offer.discountPrice}</span>
+                            </div>
+                            <a href="reservas.html?offer=${offer.id}" class="btn">Reservar Ahora</a>
+                        </div>
+                    `;
+                    container.appendChild(offerElement);
+                });
+            }
+
+            // Formatear fecha
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+
+            // Filtrado de ofertas
+            function filterOffers() {
+                const type = document.getElementById('offer-type').value;
+                const destination = document.getElementById('offer-destination').value;
+                const sort = document.getElementById('offer-sort').value;
+
+                let filtered = [...mockOffers];
+
+                // Filtrar por tipo
+                if (type !== 'all') {
+                    filtered = filtered.filter(offer => offer.type === type || offer.category === type);
+                }
+
+                // Filtrar por destino (simplificado para demo)
+                if (destination !== 'all') {
+                    filtered = filtered.filter(offer => {
+                        if (destination === 'europe') {
+                            return offer.destination.includes('España') || offer.destination.includes('Francia');
+                        } else if (destination === 'america') {
+                            return offer.destination.includes('México') || offer.destination.includes('USA');
+                        }
+                        return true;
+                    });
+                }
+
+                // Ordenar
+                if (sort === 'price-asc') {
+                    filtered.sort((a, b) => a.discountPrice - b.discountPrice);
+                } else if (sort === 'price-desc') {
+                    filtered.sort((a, b) => b.discountPrice - a.discountPrice);
+                } else if (sort === 'discount') {
+                    filtered.sort((a, b) => b.discount - a.discount);
+                } else if (sort === 'date') {
+                    filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+                }
+
+                displayOffers(filtered);
+            }
+
+            // Contador regresivo para oferta flash
+            function updateCountdown() {
+                const now = new Date();
+                const endOfDay = new Date();
+                endOfDay.setHours(23, 59, 59, 999);
+
+                const diff = endOfDay - now;
+
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+
+            // Event listeners
+            document.getElementById('apply-offer-filters').addEventListener('click', filterOffers);
+
+            // Inicializar
+            displayOffers(mockOffers);
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>

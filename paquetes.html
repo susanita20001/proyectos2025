@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquetes Turísticos | ExploraMundo</title>
+    <link rel="stylesheet" href="styles20.css">
+    <link rel="stylesheet" href="animaciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Explora<span>Mundo</span></a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="destinos.html">Destinos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="paquetes.html" class="active">Paquetes</a></li>
+                    <li><a href="seguros.html">Seguros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/paquetes-bg.jpg');">
+        <div class="container">
+            <h1>Paquetes Turísticos</h1>
+            <p>Experiencias completas diseñadas para ti</p>
+        </div>
+    </section>
+
+    <section class="packages-intro">
+        <div class="container">
+            <h2>Descubre nuestros paquetes exclusivos</h2>
+            <p>En ExploraMundo diseñamos paquetes turísticos que incluyen todo lo necesario para que disfrutes al máximo de tu viaje sin preocupaciones. Vuelos, alojamiento, traslados, excursiones y mucho más.</p>
+        </div>
+    </section>
+
+    <section class="package-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-playa.jpg');">
+                    <h3>Paquetes de Playa</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-ciudad.jpg');">
+                    <h3>Escapadas Urbanas</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-aventura.jpg');">
+                    <h3>Aventura</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-luna-miel.jpg');">
+                    <h3>Luna de Miel</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-familia.jpg');">
+                    <h3>Familiares</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+                <div class="category-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/paquete-cultural.jpg');">
+                    <h3>Culturales</h3>
+                    <a href="#" class="btn btn-transparent">Ver Paquetes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-packages">
+        <div class="container">
+            <h2>Paquetes Destacados</h2>
+            <div class="packages-tabs">
+                <button class="tab-btn active" data-tab="all">Todos</button>
+                <button class="tab-btn" data-tab="europe">Europa</button>
+                <button class="tab-btn" data-tab="america">América</button>
+                <button class="tab-btn" data-tab="asia">Asia</button>
+            </div>
+            
+            <div class="packages-grid" id="packages-grid">
+                <!-- Paquetes se cargarán dinámicamente desde la API -->
+            </div>
+        </div>
+    </section>
+
+    <section class="package-benefits">
+        <div class="container">
+            <h2>Ventajas de reservar un paquete</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <i class="fas fa-euro-sign"></i>
+                    <h3>Ahorro económico</h3>
+                    <p>Reservando vuelo y hotel juntos puedes ahorrar hasta un 30%.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-clock"></i>
+                    <h3>Ahorro de tiempo</h3>
+                    <p>No pierdas tiempo buscando cada elemento por separado.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Protección integral</h3>
+                    <p>Todos nuestros paquetes incluyen asistencia durante el viaje.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-gift"></i>
+                    <h3>Regalos exclusivos</h3>
+                    <p>Beneficios adicionales en muchos de nuestros paquetes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ExploraMundo</h3>
+                    <p>Tu agencia de viajes de confianza, creando experiencias inolvidables desde 2010.</p>
+                    <div class="socials">
+    <a href="https://www.facebook.com/susitorres" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/susi_hdz_t" target="_blank"><i class="fab fa-instagram"></i></a>
+</div> 
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="destinos.html">Destinos</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                             <li><a href="seguros.html">Seguros</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Fuentes de Artemisa</li>
+                        <li><i class="fas fa-phone"></i> +52 779 134 1560</li>
+                        <li><i class="fas fa-envelope"></i> sht23413070030463@cecyteh.edu.mx</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ExploraMundo.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Script específico para paquetes.html
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mock data - en un proyecto real esto vendría de una API
+            const mockPackages = [
+                {
+                    id: 1,
+                    title: 'Todo Incluido en Caribe',
+                    destination: 'Punta Cana, República Dominicana',
+                    description: '7 noches en resort 5* con todo incluido + vuelos + traslados.',
+                    image: 'images/paquete1.jpg',
+                    price: 1299,
+                    days: 8,
+                    category: 'beach',
+                    region: 'america',
+                    includes: ['Vuelos', 'Hotel 5*', 'Todo incluido', 'Traslados', 'Seguro'],
+                    rating: 4.7
+                },
+                {
+                    id: 2,
+                    title: 'Tour Europa Clásica',
+                    destination: 'París, Roma y Barcelona',
+                    description: '10 días visitando las capitales más emblemáticas de Europa.',
+                    image: 'images/paquete3.jpg',
+                    price: 1899,
+                    days: 10,
+                    category: 'cultural',
+                    region: 'europe',
+                    includes: ['Vuelos', 'Hoteles 4*', 'Desayunos', 'Tours guiados', 'Transporte entre ciudades'],
+                    rating: 4.9
+                },
+                {
+                    id: 3,
+                    title: 'Aventura en Costa Rica',
+                    destination: 'San José, Arenal y Manuel Antonio',
+                    description: 'Explora la naturaleza y aventura de Costa Rica en 9 días.',
+                    image: 'images/paquete2.jpg',
+                    price: 1599,
+                    days: 9,
+                    category: 'adventure',
+                    region: 'america',
+                    includes: ['Vuelos', 'Alojamiento', 'Entradas a parques', 'Actividades de aventura', 'Guía local'],
+                    rating: 4.8
+                },
+                {
+                    id: 4,
+                    title: 'Lujo en Maldivas',
+                    destination: 'Maldivas',
+                    description: '7 noches en bungalow sobre el agua con vuelos y traslados en hidroavión.',
+                    image: 'images/paquete4.jpg',
+                    price: 3499,
+                    days: 8,
+                    category: 'honeymoon',
+                    region: 'asia',
+                    includes: ['Vuelos', 'Bungalow de lujo', 'Pensión completa', 'Traslados', 'Masaje de bienvenida'],
+                    rating: 5.0
+                },
+                {
+                    id: 5,
+                    title: 'Familia en Disney',
+                    destination: 'Orlando, Florida',
+                    description: 'Paquete familiar con entradas a 4 parques y alojamiento cerca de Disney.',
+                    image: 'images/paquete5.jpg',
+                    price: 2799,
+                    days: 7,
+                    category: 'family',
+                    region: 'america',
+                    includes: ['Vuelos', 'Apartamento familiar', 'Entradas a parques', 'Traslados', 'Asistencia 24/7'],
+                    rating: 4.6
+                },
+                {
+                    id: 6,
+                    title: 'Cultural en Japón',
+                    destination: 'Tokio, Kioto y Osaka',
+                    description: 'Descubre la cultura japonesa en este paquete de 12 días.',
+                    image: 'images/paquete6.jpg',
+                    price: 2899,
+                    days: 12,
+                    category: 'cultural',
+                    region: 'asia',
+                    includes: ['Vuelos', 'Hoteles 3-4*', 'Tren bala', 'Guía de habla hispana', 'Entradas a templos'],
+                    rating: 4.8
+                }
+            ];
+
+            // Mostrar paquetes
+            function displayPackages(packages) {
+                const container = document.getElementById('packages-grid');
+                container.innerHTML = '';
+
+                packages.forEach(pkg => {
+                    const packageElement = document.createElement('div');
+                    packageElement.className = 'package-card';
+                    packageElement.innerHTML = `
+                        <div class="package-img">
+                            <img src="${pkg.image}" alt="${pkg.title}">
+                        </div>
+                        <div class="package-info">
+                            <div class="package-header">
+                                <h3>${pkg.title}</h3>
+                                <div class="package-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>${pkg.rating}</span>
+                                </div>
+                            </div>
+                            <p class="package-destination"><i class="fas fa-map-marker-alt"></i> ${pkg.destination}</p>
+                            <p class="package-description">${pkg.description}</p>
+                            <div class="package-details">
+                                <p><i class="fas fa-calendar-alt"></i> ${pkg.days} días</p>
+                                <p><i class="fas fa-euro-sign"></i> Desde ${pkg.price}</p>
+                            </div>
+                            <div class="package-includes">
+                                <h4>Incluye:</h4>
+                                <ul>
+                                    ${pkg.includes.map(item => `<li><i class="fas fa-check"></i> ${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <a href="reservas.html?package=${pkg.id}" class="btn">Reservar Paquete</a>
+                        </div>
+                    `;
+                    container.appendChild(packageElement);
+                });
+            }
+
+            // Filtrar paquetes por región
+            function filterPackages(region) {
+                if (region === 'all') {
+                    displayPackages(mockPackages);
+                } else {
+                    const filtered = mockPackages.filter(pkg => pkg.region === region);
+                    displayPackages(filtered);
+                }
+            }
+
+            // Event listeners para pestañas
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Quitar clase active de todos los botones
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Añadir clase active al botón clickeado
+                    this.classList.add('active');
+                    // Filtrar paquetes
+                    filterPackages(this.dataset.tab);
+                });
+            });
+
+            // Mostrar todos los paquetes inicialmente
+            displayPackages(mockPackages);
+        });
+    </script>
+</body>
+</html>
