@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function validateCVV(cvv) {
-        const re = /^\d{3,4}$/;
+        const re = /^\d{3}$/;
         return re.test(cvv);
     }
     
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Actualizar la UI
                     document.getElementById('booking-destination-name').textContent = destination.name;
                     document.getElementById('booking-destination-description').textContent = destination.description;
-                    document.getElementById('booking-price').textContent = `€${destination.price}`;
+                    document.getElementById('booking-price').textContent = `$${destination.price}`;
                     document.getElementById('booking-rating').textContent = destination.rating;
                 }
             } else {
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Actualizar la UI
                     document.getElementById('booking-destination-name').textContent = packageData.name;
                     document.getElementById('booking-destination-description').textContent = packageData.description;
-                    document.getElementById('booking-price').textContent = `€${packageData.price}`;
+                    document.getElementById('booking-price').textContent = `$${packageData.price}`;
                     document.getElementById('booking-rating').textContent = packageData.rating;
                 }
             }
@@ -306,9 +306,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('summary-destination').textContent = bookingData.destination;
         document.getElementById('summary-date').textContent = formatDate(travelDate);
         document.getElementById('summary-travelers').textContent = travelers;
-        document.getElementById('summary-base-price').textContent = `€${basePrice.toFixed(2)}`;
-        document.getElementById('summary-services').textContent = `€${servicesTotal.toFixed(2)}`;
-        document.getElementById('summary-total').textContent = `€${total.toFixed(2)}`;
+        document.getElementById('summary-base-price').textContent = `$${basePrice.toFixed(2)}`;
+        document.getElementById('summary-services').textContent = `$${servicesTotal.toFixed(2)}`;
+        document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
     }
     
     // Formatear fecha
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('confirmation-destination').textContent = bookingData.destination;
         document.getElementById('confirmation-date').textContent = formatDate(bookingData.travelDate);
         document.getElementById('confirmation-travelers').textContent = bookingData.travelers;
-        document.getElementById('confirmation-total').textContent = `€${bookingData.total.toFixed(2)}`;
+        document.getElementById('confirmation-total').textContent = `$${bookingData.total.toFixed(2)}`;
     }
     
     // Configurar métodos de pago
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Logo y encabezado
         doc.setFontSize(22);
         doc.setTextColor(40, 53, 147);
-        doc.text('ExploraMundo', 105, 20, { align: 'center' });
+        doc.text('ExploraMundo Con Susi', 105, 20, { align: 'center' });
         
         doc.setFontSize(12);
         doc.setTextColor(100, 100, 100);
@@ -423,14 +423,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let yPos = 150;
             bookingData.services.forEach(service => {
-                doc.text(`- ${service.name}: €${service.price.toFixed(2)}`, 25, yPos);
+                doc.text(`- ${service.name}: $${service.price.toFixed(2)}`, 25, yPos);
                 yPos += 5;
             });
         }
         
         // Total
         doc.setFontSize(12);
-        doc.text(`Total: €${bookingData.total.toFixed(2)}`, 20, 170);
+        doc.text(`Total: $${bookingData.total.toFixed(2)}`, 20, 170);
         
         // Pie de página
         doc.setFontSize(8);
